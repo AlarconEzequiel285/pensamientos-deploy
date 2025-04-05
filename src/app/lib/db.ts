@@ -1,6 +1,5 @@
 "use server";
 import mariadb from "mariadb";
-import "dotenv/config";
 
 const pool = mariadb.createPool({
   host: process.env.MYSQLHOST || "localhost",
