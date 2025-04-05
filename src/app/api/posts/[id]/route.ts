@@ -1,13 +1,7 @@
 import { NextResponse } from "next/server";
 import { query } from "@/lib/db";
 
-interface Params {
-  params: {
-    id: string;
-  };
-}
-
-export async function DELETE(req: Request, { params }: Params) {
+export async function DELETE(req: Request, { params }: { params: { id: string } }) {
   const id = parseInt(params.id, 10);
   if (isNaN(id)) {
     return NextResponse.json({ error: "ID inválido" }, { status: 400 });
