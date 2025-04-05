@@ -1,11 +1,13 @@
 "use server";
 import mariadb from "mariadb";
+import "dotenv/config";
 
 const pool = mariadb.createPool({
-  host: "mysql.railway.internal",
-  user: "root",
-  password: "yvSndOcFGzWUHLExLeLfcPeEfRXpGIGq",
-  database: "railway",
+  host: process.env.MYSQLHOST || "localhost",
+  user: process.env.MYSQLUSER || "root",
+  password: process.env.MYSQLPASSWORD || "123",
+  database: process.env.MYSQLDATABASE || "pensamientos_db",
+  port: Number(process.env.MYSQLPORT) || 3306,
   connectionLimit: 5,
 });
 
