@@ -1,1 +1,1 @@
-Mini-proyecto sobre un tablero de pensamientos. Podés publicar y votar pensamientos de otras personas. Existe un perfil de administrador (My Admin React y JWT) para ver los posts y poder eliminarlos a gusto. 
+Mini-proyecto sobre un tablero de pensamientos. Podés publicar y votar pensamientos de otras personas. Existe un perfil de administrador (My Admin React y JWT) para ver los posts y poder eliminarlos a gusto. La base de datos local se construyó con MariaDB. Para este deploy se utilizó una nube en railway adaptandolo un poco a MySQL. 
