@@ -1,12 +1,17 @@
-"use client";
+// src/app/components/PostForm.tsx
+
+//Encargado de dejar que el usuario pueda escribir un pensamiento en el textarea, para luego enviar esto a la api/create.
+
+"use client"; 
 
 import { useState } from "react";
 
+// Props que recibe el componente PostForm
 interface PostFormProps {
-  onPostCreated: () => void;
+  onPostCreated: () => void; // Callback para notificar al padre cuando se crea un post
 }
 
-// Esta función llama a la API del backend que realmente hace la conexión a la base de datos
+//Función auxiliar que se encarga de enviar el contenido a la API del backend
 async function submitPost(content: string) {
   const res = await fetch("/api/create", {
     method: "POST",
@@ -21,20 +26,24 @@ async function submitPost(content: string) {
   }
 }
 
+// Componente principal del formulario para crear pensamientos
 export default function PostForm({ onPostCreated }: PostFormProps) {
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(""); // Estado para el contenido del textarea
 
+  //  Maneja el submit del formulario
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    // Validamos que no esté vacío
     if (!content.trim()) return;
 
     try {
-      await submitPost(content);
-      setContent("");
-      onPostCreated(); // Notificamos al padre que se creó un nuevo post
+      await submitPost(content); // Enviamos a la API
+      setContent(""); // Limpiamos el textarea
+      onPostCreated(); // Notificamos al padre para refrescar la lista
     } catch (error) {
       console.error("Error al publicar el pensamiento:", error);
-      // Podés mostrar un mensaje de error si querés
+      // Podrías mostrar un mensaje de error aquí si lo deseas
     }
   };
 

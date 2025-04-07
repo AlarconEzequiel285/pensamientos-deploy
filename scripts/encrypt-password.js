@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 
-const password = "prueba"; // Cambia esto por la contraseña que quieras hashear
+const password = "prueba"; 
 
 bcrypt.hash(password, 10, function (err, hash) {
   if (err) {

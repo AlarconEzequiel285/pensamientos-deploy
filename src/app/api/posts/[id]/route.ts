@@ -14,3 +14,6 @@ export async function DELETE(req: Request) {
 
   return NextResponse.json({ message: "Post eliminado" });
 }
+
+
+//Tuvo que modificarse el parametro de delete para que se haga de una forma que Vercel permita buildearla.
